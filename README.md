@@ -2,7 +2,7 @@
 
 Docker build
 
-`build -t vikrusban/searchhealth:latest .`
+`docker build -t vikrusban/searchhealth:latest .`
 
 Docker run
 
