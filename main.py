@@ -52,7 +52,12 @@ if __name__ == "__main__":
             else:
                 ret = get_data(x)
                 if ret is not None:
-                    send_telegram(ret)
+                    data_find = """
+💊 Кажется я что-то нашел, перейди по ссылке для проверки 💊
+"""+ret+"""
+Следущая проверка через 12 часов 🕓
+                    """
+                    send_telegram(data_find)
                     print(ret)
                 else:
                     print(ret)
