@@ -13,7 +13,7 @@ def get_data(url):
         search_alert = soup.find("div", class_="alert-warning")
 
         if search_alert is not None:
-            print('Местов нет')
+            print('Товар не найден')
             sleep(1)
             return("Товар не найден")
         else:
