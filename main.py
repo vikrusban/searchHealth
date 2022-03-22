@@ -57,4 +57,4 @@ if __name__ == "__main__":
                 else:
                     print(ret)
         print("Сон на 12 часов")
-        sleep(43200)
+        sleep(28800)
