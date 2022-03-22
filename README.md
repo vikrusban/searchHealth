@@ -15,18 +15,18 @@ chat = '<id chat Telegram>'
 ```
 ***Для корректной работы требуется личный Telegram [бот](https://core.telegram.org/bots)***
 
-####Установка зависимотей
+###Установка зависимотей
 `pip3 install -r requirements.txt`
 
-####Запуск
+###Запуск
 `python3 main.py`
 
 Docker
 ------
-####Docker build
+###Docker build
 
 `docker build -t vikrusban/searchhealth:latest .`
 
-####Docker run
+###Docker run
 
 `docker run -t -i -d --name searchHealth --restart=always vikrusban/searchhealth:latest`
