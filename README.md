@@ -28,6 +28,6 @@ chat = '<id chat Telegram>'
 
 `docker build -t vikrusban/searchhealth:latest .`
 
-### Docker run 
+### Docker run
 
 `docker run -t -i -d --name searchHealth --restart=always vikrusban/searchhealth:latest`
