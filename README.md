@@ -4,8 +4,7 @@
 -- --
 ![PyPI - Python Version](https://img.shields.io/badge/python-%3D%3E3.8-green) ![Ubuntu:20.04](https://img.shields.io/badge/test-Ubuntu%3A20.04-orange)
 -- --
-Установка
----------
+##Установка
 -- --
 ***Для того, чтобы программа запустилась и работала. Нужно создать файл `config.py` и перечислить в нем переменные***
 
