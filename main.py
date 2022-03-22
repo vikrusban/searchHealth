@@ -52,7 +52,6 @@ if __name__ == "__main__":
             else:
                 ret = get_data(x)
                 if ret is not None:
-                    print("Тут шлем сообщение в телегу")
                     send_telegram(ret)
                     print(ret)
                 else:
