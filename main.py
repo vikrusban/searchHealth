@@ -36,7 +36,7 @@ async def beloreck_city(message: types.Message):
 
 async def send_data(city='', chat_id=''):
     url = await collect_data(city=city)
-    data = '''💊 Нашел свопадения, по ссылке ниже
+    data = '''💊 Нашел совпадения, по ссылке ниже
 '''+str(url)+'''     
 '''
     await bot.send_message(chat_id=chat_id, text=data)
