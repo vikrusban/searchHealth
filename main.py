@@ -1,65 +1,45 @@
-import requests
-from time import sleep
-from bs4 import BeautifulSoup
-from config import chat, token
+from os import getenv
+from async_collect_data import collect_data
+from aiogram import Bot, Dispatcher, executor, types
+from aiogram.dispatcher.filters import Text
 
-def get_data(url):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36'}
-    q = requests.get(url, headers=headers)
+bot = Bot(token=getenv('TOKEN'))
+dp = Dispatcher(bot)
 
-    if q.status_code == 200:
-        q.encoding = "utf-8"
-        result = q.text
-        soup = BeautifulSoup(result, "lxml")
-        search_alert = soup.find("div", class_="alert-warning")
 
-        if search_alert is not None:
-            #print('Товар не найден')
-            sleep(1)
-            return(None)
-        else:
-            #print(url)
-            sleep(1)
-            return(url)
-    elif q.status_code == 404:
-        print('Block')
-        sleep(1)
-        return("Запрос заблокирован")
+@dp.message_handler(commands=['start', 'help'])
+async def start(message: types.Message):
+    start_buttons = ['Белорецк', 'Магнитогорск', 'Челябинск']
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(*start_buttons)
 
-def send_telegram(text: str):
-    url = "https://api.telegram.org/bot"
-    url += token
-    method = url + "/sendMessage"
+    await message.answer('Выбери город, в котором будем искать Эутирокс и его аналоги', reply_markup=keyboard)
 
-    r = requests.post(method, data={
-         "chat_id": chat,
-         "text": text
-          })
 
-    if r.status_code != 200:
-        raise Exception("post_text error")
+@dp.message_handler(Text(equals='Белорецк'))
+async def beloreck_city(message: types.Message):
+    await message.answer('Поиск...')
+    chat_id = message.chat.id
+    await send_data(city='beloreck', chat_id=chat_id)
 
-if __name__ == "__main__":
-    list_url = []
-    with open('list_url.txt') as f:
-        list_url = f.read().splitlines()
-    f.close()
+@dp.message_handler(Text(equals='Магнитогорск'))
+async def beloreck_city(message: types.Message):
+    await message.answer('Поиск...')
+    chat_id = message.chat.id
+    await send_data(city='magnitogorsk', chat_id=chat_id)
 
-    while True:
-        for x in list_url:
-            if x == '':
-                print("Передана пустая строка в файле list_url.txt")
-            else:
-                ret = get_data(x)
-                if ret is not None:
-                    data_find = """
-💊 Кажется я что-то нашел, перейди по ссылке для проверки 💊
-"""+ret+"""
-Следущая проверка через 12 часов 🕓
-                    """
-                    send_telegram(data_find)
-                    print(ret)
-                else:
-                    print(ret)
-        print("Сон на 12 часов")
-        sleep(43200)
+@dp.message_handler(Text(equals='Челябинск'))
+async def beloreck_city(message: types.Message):
+    await message.answer('Поиск...')
+    chat_id = message.chat.id
+    await send_data(city='chelyabinsk', chat_id=chat_id)
+
+async def send_data(city='', chat_id=''):
+    url = await collect_data(city=city)
+    data = '''💊 Нашел свопадения, по ссылке ниже
+'''+str(url)+'''     
+'''
+    await bot.send_message(chat_id=chat_id, text=data)
+
+if __name__ == '__main__':
+    executor.start_polling(dp, skip_updates=True)

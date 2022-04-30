@@ -2,16 +2,12 @@
 ================================
 *For live CJ, for live❤️*
 -- --
-![PyPI - Python Version](https://img.shields.io/badge/python-%3D%3E3.8-green) ![Ubuntu:20.04](https://img.shields.io/badge/test-Ubuntu%3A20.04-orange)
+![PyPI - Python Version](https://img.shields.io/badge/python-%3D%3E3.10.4-green) ![Ubuntu:20.04](https://img.shields.io/badge/test-Ubuntu%3A22.04-orange)
 -- --
 ## Установка
 
-***Для того, чтобы программа запустилась и работала. Нужно создать файл `config.py` и перечислить в нем переменные***
+***Для того, чтобы программа запустилась и работала. Нужно передать ENV переменную TOKEN***
 
-```python
-token = '<token bot Telegram>'
-chat = '<id chat Telegram>'
-```
 ***Для корректной работы требуется личный Telegram [бот](https://core.telegram.org/bots)***
 
 ### Установка зависимотей
@@ -30,4 +26,4 @@ chat = '<id chat Telegram>'
 
 ### Docker run
 
-`docker run -t -i -d --name searchHealth --restart=always vikrusban/searchhealth:latest`
+`docker run -t -i -d --name searchHealth --restart=always -e TOKEN=5245807676:AAEGookGUKEq3BqdNGKcjfSNGumPKW5wdCc vikrusban/searchhealth:latest`
