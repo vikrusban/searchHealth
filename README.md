@@ -26,4 +26,4 @@
 
 ### Docker run
 
-`docker run -t -i -d --name searchHealth --restart=always -e TOKEN=5245807676:AAEGookGUKEq3BqdNGKcjfSNGumPKW5wdCc vikrusban/searchhealth:latest`
+`docker run -t -i -d --name searchHealth --restart=always -e TOKEN=token vikrusban/searchhealth:latest`
