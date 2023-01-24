@@ -1,7 +1,7 @@
-beautifulsoup4==4.10.0
-requests==2.27.1
-lxml==4.8.0
-fake-useragent==0.1.11
-aiogram==2.20
-aiohttp==3.8.1
+beautifulsoup4==4.11.1
+requests==2.28.2
+lxml==4.9.2
+fake-useragent==1.1.1
+aiogram==2.24
+aiohttp==3.8.3
 asyncio==3.4.3
